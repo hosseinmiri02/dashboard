@@ -7,7 +7,7 @@
 
   <a-layout>
     <a-layout-sider breakpoint="lg" collapsed-width="0">
-      <a-menu style="height: 100vh" mode="vertical">
+      <a-menu :style="{ height: '100vh' }" mode="vertical">
         <a-menu-item key="1">
           <DashboardOutlined />
           <router-link :to="{ name: 'dashboard' }" style="margin-left: 10px"
