@@ -10,27 +10,27 @@
       <a-menu :style="{ height: '100vh' }" mode="vertical">
         <a-menu-item key="1">
           <DashboardOutlined />
-          <router-link :to="{ name: 'dashboard' }" style="margin-left: 10px"
-            >Dashboard</router-link
-          >
+          <router-link :to="{ name: 'dashboard' }" style="margin-left: 10px">{{
+            $t("nav.dashboard")
+          }}</router-link>
         </a-menu-item>
         <a-menu-item key="2">
           <OrderedListOutlined />
-          <router-link :to="{ name: 'todos' }" style="margin-left: 10px"
-            >Todos</router-link
-          >
+          <router-link :to="{ name: 'todos' }" style="margin-left: 10px">{{
+            $t("nav.todos")
+          }}</router-link>
         </a-menu-item>
         <a-menu-item key="3">
           <CloudOutlined />
-          <router-link :to="{ name: 'weather' }" style="margin-left: 10px"
-            >Weather</router-link
-          >
+          <router-link :to="{ name: 'weather' }" style="margin-left: 10px">{{
+            $t("nav.weather")
+          }}</router-link>
         </a-menu-item>
         <a-menu-item key="4">
           <SettingOutlined />
-          <router-link :to="{ name: 'profile' }" style="margin-left: 10px"
-            >Profile</router-link
-          >
+          <router-link :to="{ name: 'profile' }" style="margin-left: 10px">{{
+            $t("nav.profile")
+          }}</router-link>
         </a-menu-item>
       </a-menu>
     </a-layout-sider>
@@ -39,7 +39,6 @@
       <div
         :style="{
           padding: '24px',
-          background: '#fff',
           minHeight: '720px',
         }">
         <router-view />

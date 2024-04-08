@@ -1,16 +1,31 @@
 <template>
-  <a-flex :style="{ height: '60vh' }" align="center" justify="center" vertical>
-    <a-typography-text :style="{ fontSize: '50px' }">{{
-      currentTime
-    }}</a-typography-text>
-    <a-typography-title>
-      {{ greetingMessage }}
-    </a-typography-title>
-  </a-flex>
+  <a-config-provider
+    :theme="{
+      algorithm: currentTheme === 'dark' ? theme.darkAlgorithm : null,
+    }">
+    <a-flex
+      :style="{ height: '60vh' }"
+      align="center"
+      justify="center"
+      vertical>
+      <a-typography-text :style="{ fontSize: '50px' }">{{
+        currentTime
+      }}</a-typography-text>
+      <a-typography-title>
+        {{ greetingMessage }}
+      </a-typography-title>
+    </a-flex>
+  </a-config-provider>
 </template>
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from "vue";
+import { theme } from "ant-design-vue";
+import { useStore } from "vuex";
+import i18next from "i18next";
+
+const store = useStore();
+const currentTheme = store.state.theme;
 
 const userName = ref("");
 const currentTime = ref(
@@ -34,11 +49,11 @@ function updateTime() {
 const greetingMessage = computed(() => {
   const hour = new Date().getHours();
   if (hour >= 5 && hour < 12) {
-    return `Good Morning, ${userName.value}`;
+    return i18next.t("greeting.goodMorning", { userName: userName.value });
   } else if (hour >= 12 && hour < 18) {
-    return `Good Afternoon, ${userName.value}`;
+    return i18next.t("greeting.goodAfternoon", { userName: userName.value });
   } else {
-    return `Good Evening, ${userName.value}`;
+    return i18next.t("greeting.goodEvening", { userName: userName.value });
   }
 });
 
