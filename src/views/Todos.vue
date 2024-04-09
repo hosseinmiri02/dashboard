@@ -39,26 +39,27 @@
           <!-- Display mode for todo -->
           <template v-else>
             <!-- Container for todo text -->
-            <div>
+            <div style="display: inline-block; width: 40%">
               <!-- Display todo text -->
               <span
                 :class="{ 'todo-done': todo.done }"
+                class="todo-text"
                 @dblclick="editTodo(todo)">
                 {{ todo.text }}
               </span>
             </div>
             <!-- Buttons for todo actions -->
-            <div>
+            <div style="width: 60%">
               <!-- Checkbox for marking todo as done -->
               <a-checkbox
                 v-model:checked="todo.done"
                 @change="saveToLocalStorage"
-                style="margin-right: 20px"></a-checkbox>
+                style="margin-right: 10px"></a-checkbox>
               <!-- Button to edit todo -->
               <a-button
                 @click="editTodo(todo)"
                 shape="circle"
-                style="margin-right: 10px">
+                style="margin-right: 5px">
                 <template #icon>
                   <EditOutlined />
                 </template>
@@ -189,6 +190,11 @@ onMounted(() => {
 
 .todo-done {
   text-decoration: line-through;
+}
+
+.todo-text {
+  /* width: 40%; */
+  word-wrap: break-word;
 }
 
 .todo-done-bg {
