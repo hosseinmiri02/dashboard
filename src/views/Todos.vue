@@ -15,9 +15,12 @@
         @keyup.enter="addTodo"
         placeholder="Add a new todo..." />
       <!-- List of todos -->
-      <a-list>
+      <a-list style="margin-top: 20px">
         <!-- Individual todo items -->
-        <a-list-item v-for="(todo, index) in todos" :key="todo.id">
+        <a-list-item
+          :class="{ 'todo-done-bg': todo.done }"
+          v-for="(todo, index) in todos"
+          :key="todo.id">
           <!-- Editing mode for todo -->
           <template v-if="todo.isEditing">
             <!-- Input field for editing todo -->
@@ -36,7 +39,7 @@
           <!-- Display mode for todo -->
           <template v-else>
             <!-- Container for todo text -->
-            <div class="todo-item" :class="{ 'todo-done-bg': todo.done }">
+            <div>
               <!-- Display todo text -->
               <span
                 :class="{ 'todo-done': todo.done }"
@@ -188,13 +191,8 @@ onMounted(() => {
   text-decoration: line-through;
 }
 
-.todo-item {
-  width: 40%;
-  text-align: left;
-  padding: 10px;
-}
-
 .todo-done-bg {
   background-color: greenyellow;
+  border-radius: 10px;
 }
 </style>
