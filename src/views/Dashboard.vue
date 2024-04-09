@@ -64,11 +64,11 @@ function updateTime() {
 const greetingMessage = computed(() => {
   const hour = new Date().getHours();
   if (hour >= 5 && hour < 12) {
-    return i18next.t("greeting.goodMorning", { userName: userName.value });
+    return `${i18next.t("greeting.goodMorning")}, ${userName.value}`;
   } else if (hour >= 12 && hour < 18) {
-    return i18next.t("greeting.goodAfternoon", { userName: userName.value });
+    return `${i18next.t("greeting.goodAfternoon")}, ${userName.value}`;
   } else {
-    return i18next.t("greeting.goodEvening", { userName: userName.value });
+    return `${i18next.t("greeting.goodEvening")}, ${userName.value}`;
   }
 });
 
