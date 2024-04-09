@@ -8,27 +8,30 @@
       :title="$t('profilePage.settings')"
       style="text-align: center">
       <a-flex vertical align="center">
-        <a-input v-model:value="newUserName" />
+        <a-input id="profile-nameInput" v-model:value="newUserName" />
 
         <a-select
+          id="profile-themeInput"
           style="width: 120px"
           @change="handleThemeChange"
           :value="currentTheme"
           :style="{ marginTop: '20px' }">
-          <a-select-option value="light">{{
+          <a-select-option id="profile-lightTheme" value="light">{{
             $t("profilePage.light")
           }}</a-select-option>
-          <a-select-option value="dark">{{
+          <a-select-option id="profile-darkTheme" value="dark">{{
             $t("profilePage.dark")
           }}</a-select-option>
         </a-select>
 
         <a-select
+          id="profile-langInput"
           style="width: 120px"
           @change="handleLanguageChange"
           :value="currentLanguage"
           :style="{ marginTop: '20px' }">
           <a-select-option
+            id="profile-langItem"
             v-for="lng in Object.keys(languages)"
             :key="lng"
             :value="languages[lng].nativeName"
@@ -38,6 +41,7 @@
         </a-select>
 
         <a-button
+          id="profile-btn"
           type="primary"
           @click="saveChanges"
           :style="{ marginTop: '20px' }"

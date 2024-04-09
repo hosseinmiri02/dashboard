@@ -39,7 +39,6 @@
       <div
         :style="{
           padding: '24px',
-          minHeight: '720px',
         }">
         <router-view />
       </div>

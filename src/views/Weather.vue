@@ -9,15 +9,20 @@
       style="text-align: center">
       <div>
         <a-input
+          id="weather-input"
           v-model:value="cityName"
           placeholder="Enter city name"></a-input>
         <a-button
+          id="weather-btn"
           type="primary"
           @click="fetchWeather"
           style="margin-top: 20px"
           >{{ $t("weatherPage.getWeather") }}</a-button
         >
-        <div v-if="weatherData" style="margin-top: 30px">
+        <div
+          id="weatherInfo-container"
+          v-if="weatherData"
+          style="margin-top: 30px">
           <h2>{{ capitalizeFirstLetter(cityName) }}</h2>
           <p>
             Temperature: {{ weatherData.current_weather.temperature || "" }}°C
@@ -60,6 +65,7 @@ const fetchWeather = async () => {
     const cityInfo = findCityData(cityName.value);
     if (!cityInfo) {
       console.error("City not found in the JSON file.");
+      alert("Invalid city name! Please enter a valid city name.");
       return;
     }
     const response = await axios.get(
@@ -69,6 +75,8 @@ const fetchWeather = async () => {
     console.log(weatherData.value);
   } catch (error) {
     console.error("Error fetching weather data:", error);
+    // Alert the user about error in fetching weather data
+    alert("Error fetching weather data. Please try again later.");
   }
 };
 </script>

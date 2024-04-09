@@ -8,10 +8,10 @@
       align="center"
       justify="center"
       vertical>
-      <a-typography-text :style="{ fontSize: '50px' }">{{
+      <a-typography-text id="current-time" :style="{ fontSize: '50px' }">{{
         currentTime
       }}</a-typography-text>
-      <a-typography-title>
+      <a-typography-title id="greeting-title">
         {{ greetingMessage }}
       </a-typography-title>
     </a-flex>
