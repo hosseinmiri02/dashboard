@@ -189,7 +189,7 @@ onMounted(() => {
 }
 
 .todo-item {
-  width: 70%;
+  width: 40%;
   text-align: left;
   padding: 10px;
 }
